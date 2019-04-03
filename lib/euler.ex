@@ -59,4 +59,26 @@ defmodule Euler do
   def sol_3 do
     600_851_475_143 |> factors |> :lists.max
   end
+
+  def is_palindrome?(n), do: String.reverse(Integer.to_string(n)) == Integer.to_string(n)
+
+  @doc """
+  A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
+
+  Find the largest palindrome made from the product of two 3-digit numbers.
+
+  ## Example
+      iex> Euler.sol_4()
+      906609
+  """
+  def sol_4 do
+    :lists.max(
+      for a <- 100..999,
+          b <- 100..999,
+          c = a*b,
+          is_palindrome?(c) do
+        c
+      end
+    )
+  end
 end
