@@ -120,4 +120,23 @@ defmodule Euler do
     nums = Enum.to_list(1..100)
     :lists.sum(nums) * :lists.sum(nums) - :lists.sum(Enum.map(nums, &(&1 * &1)))
   end
+
+  def is_prime(2), do: true
+  def is_prime(n) when n < 2 or rem(n, 2) == 0, do: false
+  def is_prime(n), do: hd(factors(n)) == n
+
+  def prime_sequence, do: Stream.iterate(2, &(&1 + 1)) |> Stream.filter(&is_prime/1)
+
+  @doc """
+  By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.
+
+  What is the 10 001st prime number?
+
+  ## Example
+        iex> Euler.sol_7()
+        104_743
+  """
+  def sol_7 do
+    hd(Euler.prime_sequence() |> Stream.drop(10_000) |> Enum.take(1))
+  end
 end
