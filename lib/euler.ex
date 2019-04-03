@@ -52,4 +52,19 @@ defmodule Euler do
       Enum.filter(&(rem(&1, 2) == 0)) |>
       :lists.sum()
   end
+
+  def factors(n), do: factors(n, 2, [])
+
+  def factors(n, k, acc) when n < k*k, do: Enum.reverse(acc, [n])
+  def factors(n, k, acc) when rem(n, k) == 0, do: factors(div(n, k), k, [k | acc])
+  def factors(n, k, acc), do: factors(n, k+1, acc)
+
+  @doc """
+  The prime factors of 13195 are 5, 7, 13 and 29.
+
+  What is the largest prime factor of the number 600851475143 ?
+  """
+  def sol_3 do
+    600_851_475_143 |> factors |> :lists.max
+  end
 end
