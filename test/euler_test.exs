@@ -1,8 +1,4 @@
 defmodule EulerTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
   doctest Euler
-
-  test "greets the world" do
-    assert Euler.hello() == :world
-  end
 end

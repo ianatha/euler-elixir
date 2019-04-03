@@ -4,22 +4,13 @@ defmodule Euler do
   """
 
   @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Euler.hello()
-      :world
-
-  """
-  def hello do
-    :world
-  end
-
-  @doc """
   If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
 
   Find the sum of all the multiples of 3 or 5 below 1000.
+
+  ## Example
+      iex> Euler.sol_1()
+      233168
   """
   def sol_1 do
     1..999 |> Enum.filter(&(rem(&1, 3) == 0 or rem(&1, 5) == 0)) |> :lists.sum()
@@ -37,6 +28,10 @@ defmodule Euler do
   1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...
 
   By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
+
+  ## Example
+      iex> Euler.sol_2()
+      4613732
   """
   def sol_2 do
     1..40 |>
@@ -57,6 +52,9 @@ defmodule Euler do
   The prime factors of 13195 are 5, 7, 13 and 29.
 
   What is the largest prime factor of the number 600851475143 ?
+  ## Example
+      iex> Euler.sol_3()
+      6857
   """
   def sol_3 do
     600_851_475_143 |> factors |> :lists.max
