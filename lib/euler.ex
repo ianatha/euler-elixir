@@ -81,4 +81,27 @@ defmodule Euler do
       end
     )
   end
+
+  @doc """
+  2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
+
+  What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
+
+  ## Example
+      iex> Euler.sol_5()
+      232_792_560
+  """
+  def sol_5 do
+    limit = 20
+    sol_5(limit + 1, Enum.to_list(limit..2), Enum.to_list(limit..2))
+  end
+
+  def sol_5(n, [], _divisors), do: n
+
+  def sol_5(n, [h | t], divisors) do
+    case rem(n, h) do
+      0 -> sol_5(n, t, divisors)
+      _ -> sol_5(n+1, divisors, divisors)
+    end
+  end
 end
